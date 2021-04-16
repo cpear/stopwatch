@@ -1,24 +1,69 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Stopwatch.MainPage">
+             xmlns:stopwatch="clr-namespace:Stopwatch"
+             x:Class="Stopwatch.MainPage"
+             x:DataType="stopwatch:ViewModel">
 
     <StackLayout>
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            <Label Text="Stopwatch" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-    </StackLayout>
 
+        <StackLayout Orientation="{OnIdiom Default=Horizontal, Phone=Vertical}" Padding="30" Spacing="30">
+            <!-- Stopwatch (Data Binding) -->
+            <StackLayout HorizontalOptions="FillAndExpand">
+                <Label Text="Data Binding" FontSize="Title" />
+                <StackLayout Orientation="Horizontal">
+                    <Label FontSize="Subtitle">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="{Binding Hours}" />
+                                    <Span Text=":" />
+                                    <Span Text="{Binding Minutes}" />
+                                    <Span Text=":" />
+                                    <Span Text="{Binding Seconds}" />
+                                    <Span Text=":" />
+                                    <Span Text="{Binding Milliseconds}" />
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Start" Command="{Binding Start}" />
+                    <Button Text="Stop" Command="{Binding Stop}" />
+                    <Button Text="Reset" Command="{Binding Reset}" />
+                </StackLayout>
+            </StackLayout>
+
+            <!-- Stopwatch (No Data Binding) -->
+            <StackLayout HorizontalOptions="FillAndExpand">
+                <Label Text="No Data Binding" FontSize="Title" />
+                <StackLayout Orientation="Horizontal">
+                    <Label FontSize="Subtitle">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span x:Name="Hours" />
+                                    <Span Text=":" />
+                                    <Span x:Name="Minutes" />
+                                    <Span Text=":" />
+                                    <Span x:Name="Seconds" />
+                                    <Span Text=":" />
+                                    <Span x:Name="Milliseconds" />
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Start" Clicked="Start_Clicked" />
+                    <Button Text="Stop" Clicked="Stop_Clicked" />
+                    <Button Text="Reset" Clicked="Reset_Clicked" />
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </StackLayout>
 </ContentPage>
