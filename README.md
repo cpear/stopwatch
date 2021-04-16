@@ -1,4 +1,4 @@
 # stopwatch
-Stopwatch Demo App
-- Demonstrates a simple stopwatch with and without data-binding
-- No external dependencies are used
+Demo app in Xamarin.Forms implementing a simple stopwatch.
+- Implements a stopwatch with/without XAML data-binding
+- Demonstrates the simplest form of data-binding without any external MVVM libraries
